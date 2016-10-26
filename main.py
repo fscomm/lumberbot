@@ -27,22 +27,23 @@ def tap():
     global leaf
     if leaf == Tree.LEFT:
         pykeyboard.tap_key(pykeyboard.left_key)
+        print("left tap")
     else:
         pykeyboard.tap_key(pykeyboard.right_key)
+        print("right tap")
 
 def changing_position():
     global leaf
-    x = 577
-    y = 849
+    x = 584
+    y = 900
     if leaf == Tree.RIGHT:
-        x += 100
-    for x_axis in range(x-1,x+2):
-        for y_axis in range(y-1, y+2):
-            pixel = get_pixel_colour(x_axis, y_axis)
-            sum_pixel = sum(pixel)
-            if sum_pixel > 270 and sum_pixel < 346:
-                #print("("+str(x)+", "+str(y_axis)+"): "+str(pixel))
-                return True
+        x += 107
+    pixel = get_pixel_colour(x, y)
+    print(str(pixel))
+    sum_pixel = sum(pixel)
+    if sum_pixel > 270 and sum_pixel < 346:
+        #print("("+str(x_axis)+", "+str(y_axis)+"): "+str(pixel))
+        return True
     return False
 
 def change_leaf():
@@ -59,14 +60,15 @@ def main():
 
     x_dim, y_dim = pymouse.screen_size()
     pymouse.click(100, y_dim - 100, 1)
+    time.sleep(0.5)
 
     i = 0
     while i < 2000:
         tap()
+        time.sleep(0.16)
         if changing_position():
             change_leaf()
         i += 1
-        time.sleep(0.12)
 
 if __name__ == "__main__":
     main()
