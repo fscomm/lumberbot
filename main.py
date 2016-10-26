@@ -27,10 +27,8 @@ def tap():
     global leaf
     if leaf == Tree.LEFT:
         pykeyboard.tap_key(pykeyboard.left_key)
-        print("left tap")
     else:
         pykeyboard.tap_key(pykeyboard.right_key)
-        print("right tap")
 
 def changing_position():
     global leaf
@@ -39,7 +37,7 @@ def changing_position():
     if leaf == Tree.RIGHT:
         x += 107
     pixel = get_pixel_colour(x, y)
-    print(str(pixel))
+    #print(str(pixel))
     sum_pixel = sum(pixel)
     if sum_pixel > 270 and sum_pixel < 346:
         #print("("+str(x_axis)+", "+str(y_axis)+"): "+str(pixel))
@@ -65,7 +63,7 @@ def main():
     i = 0
     while i < 2000:
         tap()
-        time.sleep(0.16)
+        time.sleep(0.15)
         if changing_position():
             change_leaf()
         i += 1
