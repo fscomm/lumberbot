@@ -4,4 +4,4 @@ pipeline:
   output:
     image: alpine
     commands:
-      - cat .drone.yml
+      - tar --exclude='.git' --exclude='.drone.yml' -cjf "/var/www/builds/lumberbot-`date +%d.%m.%Y-%H.%M.%S`".tar.bz2 .
