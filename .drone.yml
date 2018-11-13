@@ -1,7 +1,6 @@
 pipeline:
-  clone:
-    git:
-      image: plugins/git
-  test_output:
+  git:
+    image: plugins/git
+  output:
     commands:
       - cat .drone.yml
