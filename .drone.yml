@@ -2,5 +2,6 @@ pipeline:
   git:
     image: plugins/git
   output:
+    image: alpine
     commands:
       - cat .drone.yml
