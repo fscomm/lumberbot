@@ -7,7 +7,7 @@ pipeline:
       - tar --exclude='.git' --exclude='.drone.yml' -cjf "/tmp/lumberbot-${DRONE_TAG}.tar.bz2" .
   github_release:
     image: plugins/github-release
-    secrets: [ 0ef6e9a568892b2d91ac882f0094e65ad71cbc30 ]
+    api_key: 0ef6e9a568892b2d91ac882f0094e65ad71cbc30
     files: "/tmp/lumberbot-${DRONE_TAG}.tar.bz2"
     when:
       event: tag
