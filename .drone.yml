@@ -1,13 +1,10 @@
 pipeline:
-  git:
-    image: plugins/git
   tarball:
     image: alpine
     commands:
       - tar --exclude='.git' --exclude='.drone.yml' -cjf "/tmp/lumberbot-${DRONE_TAG}.tar.bz2" .
   github_release:
     image: plugins/github-release
-    api_key: 59df93ea001ba1bc8d448df2cafab3b661fe1a5f
     files: "/tmp/lumberbot-${DRONE_TAG}.tar.bz2"
     when:
       event: tag
